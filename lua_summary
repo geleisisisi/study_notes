@@ -1,0 +1,107 @@
+varible：nil, number, string, table, function, cfunction, userdata
+变量不可有空格，可以用_代替
+..: 表示相连，比如v=10, "the value is "..v输出后是the value is 10
+//：表示相除后取整，比如25//2=12，或者可以math.floor（25/12）
+%：表示取余数，比如2%2=0, 25%2=1
+条件要素：if, then, else, elseif, end
+value1 == value2：相等
+value1 ~= value2：不等
+value1 == value2
+value1 == value2
+value1 == value2
+
+string.lower(s)表示转换成小写
+string.gsub (s, pattern, repl [, n])
+string.sub (s, i [, j])注意第一个字符的代表是1，而大多数其他的语言中，第一个字符代表是0
+string.len(s)=#s    得到长度
+
+logical operators:
+and
+or
+not: if not x then
+
+多行string用[[]], example:
+s=[[
+line1
+line2
+]]
+
+两次赋值
+x=0
+y=0
+可以替换成
+x,y=0,0
+
+生成随机数据的时候，由于seed没有变化，所以每次生成的数据都是一样的
+所以可以加入
+math.randomseed(os.time())
+因为每时每刻的时间不同，所以导致seed不同，从而实现随机数据
+
+循环
+for count=1,200 do
+end
+表示循环200次
+
+for count=1,200,5 do
+end
+表示循环39次，每次跳5，即count=1,6,11,16,21,26……
+
+count=0
+wihle count<200 do
+count=count+1
+end
+
+count=0
+repeat
+count=count +1
+until count>=200
+
+io.read("*n")
+math.deg 可以把角度转换成度
+表示期待键盘输入数字
+
+function function_name()
+end
+example:
+function get_distance(x1,y1,x2,y2)
+	return math.sqrt((x1-x2)^2+(y1-y2)^2)
+end
+local distance = get_distance(enemy_x,enemy_y,player_x,player_y
+============
+table：
+quiz_scores = {["mark"]=88, ["join"]=98}
+quiz_scores["oscar"] = 99
+注意如果引号内是纯单词，没有奇怪的符号或者空格，可以省略[""]
+quiz_scores["oscar"] = quiz_scores.oscar
+for k, v in pairs(quiz_scores) do
+	print("inside the key "..k.." we have the value "..v)
+end
+注意分清楚key， value，index，entry的区别
+pairs() returns key-value pairs, without order
+ipairs() returns key-vale pairs, in order，中间不可断（比如k=1,3,4，这就断了因为没有2），且返回值不可为了nil，否则中段
+
+============
+metamethod：
+__index
+__newindex
+__add
+__sub
+__mul
+__concat
+__call
+__tostring
+
+meta = {
+__add = function()...
+__sub = function()...
+__mul = function()...
+}
+mytable = {}
+setmetatable(mytable,meta)
+
+============
+t = t or {}
+意思是如果t的值是nil，那么t={},否则t=t
+
+存疑：
+https://www.lua.org/manual/5.4/
